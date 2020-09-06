@@ -8,13 +8,11 @@
     <div class="video-content">
     </div>
 </div>
-
 <script>
     $('#search-video').submit(function (){
         event.preventDefault();
         if($('#search-video>input').val() != null && $('#search-video>input').val() != '') {
             var string = $('#search-video>input').val();
-            // alert(string);
             $.ajax({
                 type: "POST",
                 url: "/youtubeapplication/index",
@@ -22,8 +20,15 @@
                 data: {search: string},
                 dataType: 'json',
                 success: function (data) {
-                    // data = JSON.parse(data);
-                    console.log(data.message);
+                    var videoData = data.data.items;
+                    console.log(videoData);
+                    for(var x in videoData){
+                        for (var y in videoData[x].id){
+                            var videoIdentification = videoData[x].id.videoId;
+                            $('.video-content').append('<iframe width=100% height="315" src="https://www.youtube.com/embed/' +
+                                videoIdentification + ' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+                        }
+                    }
                 },
                 error: function (data) {
                     alert('error');
