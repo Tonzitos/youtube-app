@@ -19,7 +19,7 @@ return [
                 'options' => [
                     'route'    => '/',
                     'defaults' => [
-                        'controller' => Controller\IndexController::class,
+                        'controller' => Controller\YouTubeApplicationController::class,
                         'action'     => 'index',
                     ],
                 ],
@@ -27,9 +27,9 @@ return [
             'application' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/application[/:action]',
+                    'route'    => '/youtubeapplication[/:action]',
                     'defaults' => [
-                        'controller' => Controller\IndexController::class,
+                        'controller' => Controller\YouTubeApplicationController::class,
                         'action'     => 'index',
                     ],
                 ],
@@ -38,7 +38,7 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            Controller\IndexController::class => InvokableFactory::class,
+            Controller\YouTubeApplicationController::class => InvokableFactory::class,
         ],
     ],
     'view_manager' => [
