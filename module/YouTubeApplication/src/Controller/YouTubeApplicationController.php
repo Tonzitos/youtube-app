@@ -32,7 +32,7 @@ class YouTubeApplicationController extends AbstractActionController
     }
 
     protected function getYoutubeVideos($keyword){
-        $apikey = 'AIzaSyB6xKCkXsDTUHqaUfR3JafT2LIpGuaUAIo';
+        $apikey = 'PAST_YOUR_API_KEY_HERE';
         $googleApiUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=' . $keyword . '&maxResults=' . 10 . '&key=' . $apikey . '&regionCode=IE';
 
         $ch = curl_init();
