@@ -1,1 +1,34 @@
-<h1>Hello!</h1>
+<div class="container content">
+    <div>
+        <form id="search-video" class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+    <div class="video-content">
+    </div>
+</div>
+
+<script>
+    $('#search-video').submit(function (){
+        event.preventDefault();
+        if($('#search-video>input').val() != null && $('#search-video>input').val() != '') {
+            var string = $('#search-video>input').val();
+            // alert(string);
+            $.ajax({
+                type: "POST",
+                url: "/youtubeapplication/index",
+                data: JSON.stringify({search: string}),
+                data: {search: string},
+                dataType: 'json',
+                success: function (data) {
+                    // data = JSON.parse(data);
+                    console.log(data.message);
+                },
+                error: function (data) {
+                    alert('error');
+                }
+            });
+        }
+    });
+</script>
